@@ -95,7 +95,7 @@ They are: Policies and Policy Sets
 
 As Mananging Individual policies wit Terraform Enterprise is depricated, we support only Policy-set usage. HenceForth, further discussion is only regarding Policy-sets.
 
-##### Policy-set-Creation:
+#### Policy-set-Creation:
 To manage policy sets, go to the "Policy Sets" section on the organization settings page.
 
 ![##policy-set-image](policy-sets-navigate-cd11a99d.png)
@@ -130,9 +130,33 @@ Which workspaces the policy set should be enforced on. This is only shown when t
 ##### Parameters: 
 A list of key/value parameters that will be sent to the Sentinel runtime when a policy check is being performed for the policy set. If the value can be parsed as JSON, it will be sent to Sentinel as the corresponding type (string, boolean, integer, map or list). If it fails JSON validation, it will be sent as a string. For more information on parameters, see the Sentinel parameter documentation.
 
-NOTE: FOR Additional INFO : [click here](https://www.terraform.io/docs/cloud/sentinel/manage-policies.html)
+##### NOTE: 
+FOR Additional INFO : [click here](https://www.terraform.io/docs/cloud/sentinel/manage-policies.html)
 
-## HOW TO TEST SENTINEL-POLICIES LOCALLY: 
+
+## HOW TO TEST SENTINEL-POLICIES : 
+You can use four different methods for testing your Terraform Sentinel policies:
+a)You can manually test policies against actual Terraform code by using the Terraform UI 
+b)Or by using the Terraform CLI with the remote backend to trigger runs against workspaces that use that Terraform code.
+c)You can execute automated tests against actual Terraform code by using the Terraform API.
+d)You can use the Sentinel Simulator with mocks generated from Terraform plans.
+
+In the first three methods, you are executing plans against your Terraform code and then testing the Sentinel policies against the generated plans. In the fourth method, you only use Terraform to generate your mocks. Because this method employs simulated testing, we recommend deploying policies to a Terraform server and running final testing against actual Terraform plans as well.
+
+##### While the first method is sometimes easier for new Terraform users to start with, it does have some disadvantages:
+- It is a manual method rather than an automated method.
+- Each test will take longer than if you used the Sentinel Simulator since Terraform has to run a plan against your workspace before it even invokes any Sentinel policies.
+- Unless you use Terraform policy sets carefully, you might end up running multiple policies for each test even though you only care about the one you are testing.
+- If you use the Terraform UI, all the runs you do to test your policy will end up in the histories of your workspaces and you will need to discard each run you do that passes your policies.
+
+Note: Using the Terraform CLI with the remote backend instead of the Terraform UI avoids the fourth problem because it runs speculative plans which cannot be applied and do not show up in the workspace history in the Terraform UI. This means that you do not need to discard any runs and won't have a long history of them in your workspaces. Additionally, if you use the Terraform CLI, you do not need to put your Terraform code in or link your workspaces to VCS repositories.
+
+#### Since Testing via UI has disadvantages ,further in this guide we will focus on the fourth method described above.(i.e, using SENTINEL SIMULATOR and testing locally)
+
+
+## TESTING SENTINEL-POLICIES LOCALLY VIA SENTINEL SIMULATOR:
+First step is to install sentinel simulator in our machine(where you want test the policies).This iinstance/machine need not require any permissions to install sentinel-simulator or execute sentinel polcies.
+  
   ### Installing Sentinel CLI
   we'll use Sentinel CLI to learn how to write and test policies for Terraform Cloud(Terraform Enterprise). Download it [here](https://docs.hashicorp.com/sentinel/downloads/).
 
@@ -161,3 +185,6 @@ NOTE: FOR Additional INFO : [click here](https://www.terraform.io/docs/cloud/sen
   
   #### Using sentinel-cli to test sentinel-polcies-locally:
   
+
+
+  https://www.terraform.io/docs/cloud/sentinel/mock.html
