@@ -112,24 +112,27 @@ Parameters: A list of key/value parameters that will be sent to the Sentinel run
 
 
 ## How to test sentinel-policies locally: 
-  ### How to download sentinel-policy-simulator locally:
-  
-  »Installing Sentinel CLI
-For the getting started guide, we'll use Sentinel CLI to learn how to write policies for Terraform Cloud. Download it here.
+  ### Installing Sentinel CLI
+  we'll use Sentinel CLI to learn how to write and test policies for Terraform Cloud(Terraform Enterprise). Download it [here](https://docs.hashicorp.com/sentinel/downloads/).
 
-After downloading Sentinel, unzip the package. Sentinel CLI runs as a single binary named sentinel. Any other files in the package can be safely removed and Sentinel will still function.
+  After downloading Sentinel, unzip the package. Sentinel CLI runs as a single binary named sentinel. Any other files in the package can   be safely removed and Sentinel will still function.
 
-The final step is to make sure that the sentinel binary is available on the PATH. See this page for instructions on setting the PATH on Linux and Mac. This page contains instructions for setting the PATH on Windows.
+  After Extracting move this 'sentinel' binary to '/usr/local/bin/' or for exact path setting pls follow the below process.
+  ####PATH SETTING:
+  The final step is to make sure that the sentinel binary is available on the PATH. See [this page](https://stackoverflow.com/questions/14637979/how-to-permanently-set-path-on-linux-unix) for instructions on setting the PATH   
+  on Linux and Mac. [This page](https://stackoverflow.com/questions/1618280/where-can-i-set-path-to-make-exe-on-windows) contains
+  instructions for setting the PATH on Windows.
 
-»Verifying the Installation
-After installing Sentinel CLI, verify the installation was successful by opening a new terminal session and checking that the sentinel binary is available. By executing sentinel, you should see help output similar to the following:
+   - ####Verifying the Installation
+      After installing Sentinel CLI, verify the installation was successful by opening a new terminal session and checking that the 
+      sentinel binary is available. By executing sentinel, you should see help output similar to the following:
 
-$ sentinel
-Usage: sentinel [--version] [--help] <command> [<args>]
+      $ sentinel
+      Usage: sentinel [--version] [--help] <command> [<args>]
 
-Available commands are:
-    apply      Execute a policy and output the result
-    fmt        Format Sentinel policy to a canonical format
-    test       Test policies
-    version    Prints the Sentinel runtime version
-If you get an error that the binary could not be found, then your PATH environment variable was not setup properly. Please go back and ensure that your PATH variable contains the directory where Sentinel was installed.
+      Available commands are:
+          apply      Execute a policy and output the result
+          fmt        Format Sentinel policy to a canonical format
+          test       Test policies
+          version    Prints the Sentinel runtime version
+      If you get an error that the binary could not be found, then your PATH environment variable was not setup properly. Please go back       and ensure that your PATH variable contains the directory where Sentinel was installed.
