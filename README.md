@@ -273,5 +273,6 @@ For sentinel test, the paths are relative to the specific test configuration fil
           "main": true
         }
       }
-
+ 
+ ##### FOR DATA INSIDE MOCK REFER [here](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Sentinel-Imports/mocks) 
  NOTE: For More Info Refer [here](https://www.terraform.io/docs/cloud/sentinel/mock.html)
