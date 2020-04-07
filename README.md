@@ -236,9 +236,7 @@ The recommended placement of the files is in a subdirectory of the repository ho
         ├── mock-tfstate-v2.sentinel
         └── mock-tfrun.sentinel
 
-Each configuration that needs access to the mock should reference the mock data files within the mock block in the Sentinel configuration file.
-
-For sentinel apply, this path is relative to the working directory. Assuming you always run this command from the repository root, the sentinel.json configuration file would look like:
+The sentinel.json configuration file would look like:
 
     {
       "mock": {
@@ -254,25 +252,9 @@ For sentinel apply, this path is relative to the working directory. Assuming you
         "tfrun": "testdata/mock-tfrun.sentinel"
       }
     }
-For sentinel test, the paths are relative to the specific test configuration file. For example, the contents of pass.json, asserting that the result of the main rule was true, would be:
 
-      {
-        "mock": {
-          "tfconfig": "../../testdata/mock-tfconfig.sentinel",
-          "tfconfig/v1": "../../testdata/mock-tfconfig.sentinel",
-          "tfconfig/v2": "../../testdata/mock-tfconfig-v2.sentinel",
-          "tfplan": "../../testdata/mock-tfplan.sentinel",
-          "tfplan/v1": "../../testdata/mock-tfplan.sentinel",
-          "tfplan/v2": "../../testdata/mock-tfplan-v2.sentinel",
-          "tfstate": "../../testdata/mock-tfstate.sentinel",
-          "tfstate/v1": "../../testdata/mock-tfstate.sentinel",
-          "tfstate/v2": "../../testdata/mock-tfstate-v2.sentinel",
-          "tfrun": "../../testdata/mock-tfrun.sentinel"
-        },
-        "test": {
-          "main": true
-        }
-      }
+ ##### FOR PROPER PLACEMENT OF MOCK-DATA IN YOUR PC , REFER [this example](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Mock-Structure-Example)
  
  ##### FOR DATA INSIDE MOCK REFER [here](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Sentinel-Imports/mocks) 
+ 
  NOTE: For More Info Refer [here](https://www.terraform.io/docs/cloud/sentinel/mock.html)
