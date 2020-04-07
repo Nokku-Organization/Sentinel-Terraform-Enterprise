@@ -91,7 +91,7 @@ main = rule { is_sunny and is_wednesday }
 ## How to associate Sentinel-policies with Terraform-Enterprise:
 To manage policy sets, go to the "Policy Sets" section on the organization settings page.
 
-![policy-set-image](policy-sets-navigate-cd11a99d.png)
+![##policy-set-image](policy-sets-navigate-cd11a99d.png)
 policy-sets-navigate
 
 Policy sets enforced on all workspaces are marked "All workspaces" in this list; other policy sets show how many workspaces they are enforced on. You may also notice policy sets with an informational tag that reads "Policies managed individually", which indicates that the policy set is not versioned and uses policy relationships (deprecated). These policy sets will need to be migrated in the future.
