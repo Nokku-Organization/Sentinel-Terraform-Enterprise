@@ -21,30 +21,29 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
   
   ### b)What is sentinel-policy:
   
-  ### c)How to write a policy:
+  ### c)HOW TO WRITE A SENTINEL-POLICY:
   
   Sentinel expects there to be a main rule. The value of this rule is the result of the entire policy.
 
-If the result of main is true, the policy passes. If the value is anything else (false or a non-boolean value), the policy fails. The exact meaning of what happens a policy passes or fails is dependent on the host system
+  If the result of main is true, the policy passes. If the value is anything else (false or a non-boolean value), the policy fails. The exact meaning of what happens a policy passes or fails is dependent on the host system
 
+  * Sentinel policies are executed top-down
 
-Sentinel policies are executed top-down
+  The examples below is about the simplest practical example of Sentinel. It is reasonable to imagine this as a realistic policies. This shows that in most cases, Sentinel will be extremely simple:
 
-The example below is about the simplest practical example of Sentinel. It is reasonable to imagine this as a realistic policy. This shows that in most cases, Sentinel will be extremely simple:
+ ##### Example-1:
+        value = 10
+        main = value > 5
+ ##### Example-2:
+      main = rule { request.method is "GET" and request.headers contains "X-Key" }
 
-value = 10
-main = value > 5
-or
-main = rule { request.method is "GET" and request.headers contains "X-Key" }
+ #### Rules of Policy :
+ Rules form the basis of a policy by representing behavior that is either passing or failing (true or false). Rules are a first class language construct in Sentinel. A policy can and should be broken down into rules to aid with readability, testability, and performance.
 
-
-Rules form the basis of a policy by representing behavior that is either passing or failing (true or false). Rules are a first class language construct in Sentinel. A policy can and should be broken down into rules to aid with readability, testability, and performance.
-
-An example usage of rules is shown below:
-
-is_sunny     = rule { weather is "sunny" }
-is_wednesday = rule { day is "wednesday" }
-main = rule { is_sunny and is_wednesday }
+ ##### An example usage of rules is shown below:
+    is_sunny     = rule { weather is "sunny" }
+    is_wednesday = rule { day is "wednesday" }
+    main = rule { is_sunny and is_wednesday }
 
 
   
