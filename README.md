@@ -111,7 +111,7 @@ Parameters: A list of key/value parameters that will be sent to the Sentinel run
 
 
 
-## How to test sentinel-policies locally: 
+## HOW TO TEST SENTINEL-POLICIES LOCALLY: 
   ### Installing Sentinel CLI
   we'll use Sentinel CLI to learn how to write and test policies for Terraform Cloud(Terraform Enterprise). Download it [here](https://docs.hashicorp.com/sentinel/downloads/).
 
@@ -135,4 +135,8 @@ Parameters: A list of key/value parameters that will be sent to the Sentinel run
           version    Prints the Sentinel runtime version
       
    If you get an error that the binary could not be found, then your PATH environment variable was not setup properly. Please go back and ensure that your PATH variable contains the directory where Sentinel was installed.
+  
   For additional information : [AdditionalInfo](https://learn.hashicorp.com/terraform/sentinel/sentinel-intro#sentinel-cli)
+  
+  #### Using sentinel-cli to test sentinel-polcies-locally:
+  
