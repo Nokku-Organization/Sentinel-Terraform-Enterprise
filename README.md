@@ -85,13 +85,20 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
     └── state (tfstate import alias)
     
      
-  ### d)Example explanation of a sentinel-policy code
+  ### d)Example explanation of a sentinel-policy code:
 
 ## How to associate Sentinel-policies with Terraform-Enterprise:
+
+We have two ways to associate our sentinel-policies we created with Terraform-Enterprise-Organization.
+They are: Policies and Policy Sets
+(Note: Refer the below image , you will notice Policies , Policy-sets options on the left hand side)
+
+As Mananging Individual policies wit Terraform Enterprise is depricated, we support only Policy-set usage. HenceForth, further discussion is only regarding Policy-sets.
+
+##### Policy-set-Creation:
 To manage policy sets, go to the "Policy Sets" section on the organization settings page.
 
 ![##policy-set-image](policy-sets-navigate-cd11a99d.png)
-policy-sets-navigate
 
 Policy sets enforced on all workspaces are marked "All workspaces" in this list; other policy sets show how many workspaces they are enforced on. You may also notice policy sets with an informational tag that reads "Policies managed individually", which indicates that the policy set is not versioned and uses policy relationships (deprecated). These policy sets will need to be migrated in the future.
 
@@ -99,16 +106,31 @@ To create a new policy set, click the "Create a new policy set" button; to edit 
 
 When creating or editing a policy set, the following fields are available:
 
-Name: The name of the policy set, which is used in the UI. Must be unique to your organization. Accepts letters, numbers, -, and _.
-Description: A description of the policy set's purpose. The description can be any length and supports Markdown rendering.
-Scope of policies: Whether the set should be enforced on all workspaces, or only on a chosen list of workspaces.
-VCS repo or "Upload via API": This area allows selecting a VCS repository from an existing OAuth client connection. Choosing "Upload via API" will not configure VCS integration, and instead tarballs of policy sets may be uploaded via the API. See the policy set versions for more information on uploading policy sets using the API.
-VCS Branch: This field allows specifying the branch within a VCS repository from which to import new versions of policies. If left blank, the value your version control provides as the default branch of the VCS repository is used.
-Policies Path: This field allows specifying a sub-directory within a VCS repository for the policy set files. This allows maintaining multiple policy sets within a single repository. The value of this field should be the path to the directory containing the sentinel.hcl configuration file of the policy set you wish to configure. Any files in the repository which are not within this path will not be included when the policy set is cloned. Commits to the repository which do not match the specified directory will be ignored. If left blank, the root of the repository is used. A leading / may be used, but is optional (relative paths are assumed to originate from the root of the repository).
-Workspaces: Which workspaces the policy set should be enforced on. This is only shown when the scope of policies is set to "Policies enforced on selected workspaces." Use the drop-down menu and "Add workspace" button to add workspaces, and the trash can (🗑) button to remove them.
-Parameters: A list of key/value parameters that will be sent to the Sentinel runtime when a policy check is being performed for the policy set. If the value can be parsed as JSON, it will be sent to Sentinel as the corresponding type (string, boolean, integer, map or list). If it fails JSON validation, it will be sent as a string. For more information on parameters, see the Sentinel parameter documentation.
+##### Name: 
+The name of the policy set, which is used in the UI. Must be unique to your organization. Accepts letters, numbers, -, and _.
 
+##### Description:
+A description of the policy set's purpose. The description can be any length and supports Markdown rendering.
 
+##### Scope of policies: 
+Whether the set should be enforced on all workspaces, or only on a chosen list of workspaces.
+
+##### VCS repo or "Upload via API": 
+This area allows selecting a VCS repository from an existing OAuth client connection. Choosing "Upload via API" will not configure VCS integration, and instead tarballs of policy sets may be uploaded via the API. See the policy set versions for more information on uploading policy sets using the API.
+
+##### VCS Branch: 
+This field allows specifying the branch within a VCS repository from which to import new versions of policies. If left blank, the value your version control provides as the default branch of the VCS repository is used.
+
+##### Policies Path: 
+This field allows specifying a sub-directory within a VCS repository for the policy set files. This allows maintaining multiple policy sets within a single repository. The value of this field should be the path to the directory containing the sentinel.hcl configuration file of the policy set you wish to configure. Any files in the repository which are not within this path will not be included when the policy set is cloned. Commits to the repository which do not match the specified directory will be ignored. If left blank, the root of the repository is used. A leading / may be used, but is optional (relative paths are assumed to originate from the root of the repository).
+
+##### Workspaces: 
+Which workspaces the policy set should be enforced on. This is only shown when the scope of policies is set to "Policies enforced on selected workspaces." Use the drop-down menu and "Add workspace" button to add workspaces, and the trash can (🗑) button to remove them.
+
+##### Parameters: 
+A list of key/value parameters that will be sent to the Sentinel runtime when a policy check is being performed for the policy set. If the value can be parsed as JSON, it will be sent to Sentinel as the corresponding type (string, boolean, integer, map or list). If it fails JSON validation, it will be sent as a string. For more information on parameters, see the Sentinel parameter documentation.
+
+NOTE: FOR Additional INFO : [click here](https://www.terraform.io/docs/cloud/sentinel/manage-policies.html)
 
 ## HOW TO TEST SENTINEL-POLICIES LOCALLY: 
   ### Installing Sentinel CLI
