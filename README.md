@@ -7,21 +7,10 @@ Sentinel is an embeddable policy as code framework to enable fine-grained, logic
 
 Sentinel gives operations teams the governance capabilities they need to ensure that all infrastructure provisioned with Terraform Enterprise complies with their organization's provisioning rules. 
 
-## How to write Sentinel-policies :
-  ### a)Sentinel files/file-structure in Github:
-  There are two types of files : ".sentinel" , "sentinel.hcl"
-  - In <name>.sentinel files, we need to place our policy-code
-  - In sentinel.hcl file, we need to mention which policy need to be applied and which level.
-    There are three type of levels: 
-    - hard-mandatory requires that the policy passes. If a policy fails, the run is halted and may not be applied until the failure is resolved.
-    - soft-mandatory is much like hard-mandatory, but allows an administrator to override policy failures on a case-by-case basis.
-    - advisory will never interrupt the run, and instead will only surface policy failures as informational to the user.
-  - Refer this sample-example for better understanding structure: [Example](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Example)
+## SENTINEL-POLICY :
+  ### a)what is sentinel-policy:
   
-  
-  ### b)What is sentinel-policy:
-  
-  ### c)HOW TO WRITE A SENTINEL-POLICY:
+  ### b)how to write a sentinel-policy:
   
   Sentinel expects there to be a main rule. The value of this rule is the result of the entire policy.
 
@@ -85,7 +74,23 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
     └── state (tfstate import alias)
     
      
-  ### d)Example explanation of a sentinel-policy code:
+  ### c)example explanation of a sentinel-policy code:
+  
+  ### d)sentinel files/file-structure in github:
+  There are two types of files : ".sentinel" , "sentinel.hcl"
+  - In <name>.sentinel files, we need to place our policy-code
+  - In sentinel.hcl file, we need to mention which policy need to be applied and which level.
+    There are three type of levels: 
+    - hard-mandatory requires that the policy passes. If a policy fails, the run is halted and may not be applied until the failure is resolved.
+    - soft-mandatory is much like hard-mandatory, but allows an administrator to override policy failures on a case-by-case basis.
+    - advisory will never interrupt the run, and instead will only surface policy failures as informational to the user.
+  - Refer this sample-example for better understanding structure: [Example](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Example)
+  
+  
+  
+  
+  
+  
 
 ## How to associate Sentinel-policies with Terraform-Enterprise:
 
