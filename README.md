@@ -25,38 +25,40 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
   There are 4 imports we make use of.
   1)tfplan- most commonly used:
   tfplan
-├── module() (function)
-│   └── (module namespace)
-│       ├── path ([]string)
-│       ├── data
-│       │   └── TYPE.NAME[NUMBER]
-│       │       ├── applied (map of keys)
-│       │       └── diff
-│       │           └── KEY
-│       │               ├── computed (bool)
-│       │               ├── new (string)
-│       │               └── old (string)
-│       └── resources
-│           └── TYPE.NAME[NUMBER]
-│               ├── applied (map of keys)
-│               ├── destroy (bool)
-│               ├── requires_new (bool)
-│               └── diff
-│                   └── KEY
-│                       ├── computed (bool)
-│                       ├── new (string)
-│                       └── old (string)
-├── module_paths ([][]string)
-├── terraform_version (string)
-├── variables (map of keys)
-│
-├── data (root module alias)
-├── path (root module alias)
-├── resources (root module alias)
-│
-├── config (tfconfig namespace alias)
-└── state (tfstate import alias)
-»
+
+    ```hcl
+    ├── module() (function)
+    │   └── (module namespace)
+    │       ├── path ([]string)
+    │       ├── data
+    │       │   └── TYPE.NAME[NUMBER]
+    │       │       ├── applied (map of keys)
+    │       │       └── diff
+    │       │           └── KEY
+    │       │               ├── computed (bool)
+    │       │               ├── new (string)
+    │       │               └── old (string)
+    │       └── resources
+    │           └── TYPE.NAME[NUMBER]
+    │               ├── applied (map of keys)
+    │               ├── destroy (bool)
+    │               ├── requires_new (bool)
+    │               └── diff
+    │                   └── KEY
+    │                       ├── computed (bool)
+    │                       ├── new (string)
+    │                       └── old (string)
+    ├── module_paths ([][]string)
+    ├── terraform_version (string)
+    ├── variables (map of keys)
+    │
+    ├── data (root module alias)
+    ├── path (root module alias)
+    ├── resources (root module alias)
+    │
+    ├── config (tfconfig namespace alias)
+    └── state (tfstate import alias)
+    ```
      
   ### d)Example explanation of a sentinel-policy code
 
