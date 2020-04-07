@@ -26,7 +26,7 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
   1)tfplan- most commonly used:
   tfplan
 
-    ```hcl
+    
     ├── module() (function)
     │   └── (module namespace)
     │       ├── path ([]string)
@@ -58,7 +58,7 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
     │
     ├── config (tfconfig namespace alias)
     └── state (tfstate import alias)
-    ```
+    
      
   ### d)Example explanation of a sentinel-policy code
 
