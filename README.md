@@ -135,3 +135,4 @@ Parameters: A list of key/value parameters that will be sent to the Sentinel run
           version    Prints the Sentinel runtime version
       
    If you get an error that the binary could not be found, then your PATH environment variable was not setup properly. Please go back and ensure that your PATH variable contains the directory where Sentinel was installed.
+  For additional information : [AdditionalInfo](https://learn.hashicorp.com/terraform/sentinel/sentinel-intro#sentinel-cli)
