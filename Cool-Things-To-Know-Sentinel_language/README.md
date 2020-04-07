@@ -24,6 +24,27 @@ req = http.request("https://example.hashicorp.com").with_header("Authorization",
 resp = json.unmarshal(http.get(req).body)
 main = rule { resp["some_key"] is true }
 
+
+
+»Import: json
+The json import enables a Sentinel policy to parse and access a JSON document.
+
+»json.unmarshal(obj)
+Unmarshals the JSON object obj into a native Sentinel structure.
+
+All native JSON types can be represented perfectly as Sentinel native types.
+
+// Typically the input for this would come from an external source.
+config = json.unmarshal("{ \"foo\": 42 }")
+config.foo // 42
+config.bar // undefined (as usual for accessing a non-existent map key)
+»json.marshal(obj)
+Marshals the Sentinel object obj into a JSON object encoded as a string.
+
+Functions and undefined cannot be natively encoded as JSON. If values of either type are found in the structure, this will return undefined.
+
+
+
 The with_header function above returns the request object with the Authorization HTTP header set to value of the variable some_value. Many of the methods within the http import API are designed around this concept of method chaining, allowing for complex building of HTTP requests encapsulated in functions. The following is an idiomatic example further demonstrating this pattern:
 
 
