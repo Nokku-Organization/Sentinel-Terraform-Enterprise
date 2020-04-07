@@ -9,7 +9,15 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
 
 ## SENTINEL-POLICY :
   ### a)what is sentinel-policy:
+  Terraform Cloud uses Sentinel as part of the Governance & Policy Feature Set to enable granular application of infrastructure. Broadly, Sentinel functions as a safeguard with regulations your organization defines.
   
+  ![tf-withoutsentinel](tf-withoutsentinel.png)
+  
+  ![tf-withsentinel](tf-withsentinel.png)
+  
+  Sentinel also allows cost-centric policies to be created and then automatically enforced in the Terraform workflow.[clicke-here](https://www.hashicorp.com/blog/announcing-cost-estimation-for-terraform-cloud-and-enterprise/) for info.
+  
+  Note: For More Info clicke [here](https://learn.hashicorp.com/terraform/sentinel/sentinel-intro#why-use-sentinel)
   ### b)how to write a sentinel-policy:
   
   Sentinel expects there to be a main rule. The value of this rule is the result of the entire policy.
