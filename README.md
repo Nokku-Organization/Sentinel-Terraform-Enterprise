@@ -123,9 +123,8 @@ Parameters: A list of key/value parameters that will be sent to the Sentinel run
 
 
   #### Verifying the Installation:
-      After installing Sentinel CLI, verify the installation was successful by opening a new terminal session and checking that the sentinel binary is available. By executing sentinel, you should see help output similar to the following:
+  After installing Sentinel CLI, verify the installation was successful by opening a new terminal session and checking that the sentinel binary is available. By executing sentinel, you should see help output similar to the following:
       
-      ``` hcl
       $ sentinel
       Usage: sentinel [--version] [--help] <command> [<args>]
 
@@ -134,5 +133,5 @@ Parameters: A list of key/value parameters that will be sent to the Sentinel run
           fmt        Format Sentinel policy to a canonical format
           test       Test policies
           version    Prints the Sentinel runtime version
-      ```
-      If you get an error that the binary could not be found, then your PATH environment variable was not setup properly. Please go back and ensure that your PATH variable contains the directory where Sentinel was installed.
+      
+   If you get an error that the binary could not be found, then your PATH environment variable was not setup properly. Please go back and ensure that your PATH variable contains the directory where Sentinel was installed.
