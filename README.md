@@ -197,7 +197,81 @@ First step is to install sentinel simulator in our machine(where you want test t
   For additional information : [AdditionalInfo](https://learn.hashicorp.com/terraform/sentinel/sentinel-intro#sentinel-cli)
   
   #### Using sentinel-cli to test sentinel-polcies-locally:
-  
+  You need to mock the data that you wish your policies to operate on(i.e, download some files containig data related to terraform-plan or terraform-config or etc to your pc)
+ 
+ Mock data can be generated using the UI by expanding the plan status section of the run page, and clicking on the Download Sentinel mocks button.
+ 
+ ![download-mocks-ce82bcf5](download-mocks-ce82bcf5.png)
+ 
+ If the button is not visible, then the plan is ineligible for mock generation or the user doesn't have the necessary permissions. See [Mock Data Availability](https://www.terraform.io/docs/cloud/sentinel/mock.html#mock-data-availability) for more details.
 
+##### Using Mock Data
+Note: The v2 mock files are only available on Terraform 0.12 and higher.
 
-  https://www.terraform.io/docs/cloud/sentinel/mock.html
+Mock data is supplied as a bundled tarball, containing 4 files:
+
+    mock-tfconfig.sentinel    # tfconfig mock data
+    mock-tfconfig-v2.sentinel # tfconfig/v2 mock data
+    mock-tfplan.sentinel      # tfplan mock data
+    mock-tfplan-v2.sentinel   # tfplan/v2 mock data
+    mock-tfstate.sentinel     # tfstate mock data
+    mock-tfstate-v2.sentinel  # tfstate/v2 mock data
+    mock-tfrun.sentinel       # tfrun mock data
+
+The recommended placement of the files is in a subdirectory of the repository holding your policies, so they don't interfere with sentinel test. (While the test data is Sentinel code, it's not a policy and will produce errors if evaluated like one.)
+
+    .
+    ├── foo.sentinel
+    ├── sentinel.json
+    ├── test
+    │   └── foo
+    │       ├── fail.json
+    │       └── pass.json
+    └── testdata
+        ├── mock-tfconfig.sentinel
+        ├── mock-tfconfig-v2.sentinel
+        ├── mock-tfplan.sentinel
+        ├── mock-tfplan-v2.sentinel
+        ├── mock-tfstate.sentinel
+        ├── mock-tfstate-v2.sentinel
+        └── mock-tfrun.sentinel
+
+Each configuration that needs access to the mock should reference the mock data files within the mock block in the Sentinel configuration file.
+
+For sentinel apply, this path is relative to the working directory. Assuming you always run this command from the repository root, the sentinel.json configuration file would look like:
+
+    {
+      "mock": {
+        "tfconfig": "testdata/mock-tfconfig.sentinel",
+        "tfconfig/v1": "testdata/mock-tfconfig.sentinel",
+        "tfconfig/v2": "testdata/mock-tfconfig-v2.sentinel",
+        "tfplan": "testdata/mock-tfplan.sentinel",
+        "tfplan/v1": "testdata/mock-tfplan.sentinel",
+        "tfplan/v2": "testdata/mock-tfplan-v2.sentinel",
+        "tfstate": "testdata/mock-tfstate.sentinel",
+        "tfstate/v1": "testdata/mock-tfstate.sentinel",
+        "tfstate/v2": "testdata/mock-tfstate-v2.sentinel",
+        "tfrun": "testdata/mock-tfrun.sentinel"
+      }
+    }
+For sentinel test, the paths are relative to the specific test configuration file. For example, the contents of pass.json, asserting that the result of the main rule was true, would be:
+
+      {
+        "mock": {
+          "tfconfig": "../../testdata/mock-tfconfig.sentinel",
+          "tfconfig/v1": "../../testdata/mock-tfconfig.sentinel",
+          "tfconfig/v2": "../../testdata/mock-tfconfig-v2.sentinel",
+          "tfplan": "../../testdata/mock-tfplan.sentinel",
+          "tfplan/v1": "../../testdata/mock-tfplan.sentinel",
+          "tfplan/v2": "../../testdata/mock-tfplan-v2.sentinel",
+          "tfstate": "../../testdata/mock-tfstate.sentinel",
+          "tfstate/v1": "../../testdata/mock-tfstate.sentinel",
+          "tfstate/v2": "../../testdata/mock-tfstate-v2.sentinel",
+          "tfrun": "../../testdata/mock-tfrun.sentinel"
+        },
+        "test": {
+          "main": true
+        }
+      }
+
+ NOTE: For More Info Refer [here](https://www.terraform.io/docs/cloud/sentinel/mock.html)
