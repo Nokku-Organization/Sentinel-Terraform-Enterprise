@@ -42,47 +42,10 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
     is_wednesday = rule { day is "wednesday" }
     main = rule { is_sunny and is_wednesday }
 
-
-  
-  There are 4 imports we make use of.
-  1)tfplan- most commonly used:
-  tfplan
-
-    
-    ├── module() (function)
-    │   └── (module namespace)
-    │       ├── path ([]string)
-    │       ├── data
-    │       │   └── TYPE.NAME[NUMBER]
-    │       │       ├── applied (map of keys)
-    │       │       └── diff
-    │       │           └── KEY
-    │       │               ├── computed (bool)
-    │       │               ├── new (string)
-    │       │               └── old (string)
-    │       └── resources
-    │           └── TYPE.NAME[NUMBER]
-    │               ├── applied (map of keys)
-    │               ├── destroy (bool)
-    │               ├── requires_new (bool)
-    │               └── diff
-    │                   └── KEY
-    │                       ├── computed (bool)
-    │                       ├── new (string)
-    │                       └── old (string)
-    ├── module_paths ([][]string)
-    ├── terraform_version (string)
-    ├── variables (map of keys)
-    │
-    ├── data (root module alias)
-    ├── path (root module alias)
-    ├── resources (root module alias)
-    │
-    ├── config (tfconfig namespace alias)
-    └── state (tfstate import alias)
-    
-     
+   
   ### c)example explanation of a sentinel-policy code:
+  An [Sample Example](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Example) is been given with complete Explanation in that [README](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Example) file
+  
   
   ### d)sentinel files/file-structure in github:
   There are two types of files : ".sentinel" , "sentinel.hcl"
@@ -94,11 +57,7 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
     - advisory will never interrupt the run, and instead will only surface policy failures as informational to the user.
   - Refer this sample-example for better understanding structure: [Example](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Example)
   
-  
-  
-  
-  
-  
+
 
 ## How to associate Sentinel-policies with Terraform-Enterprise:
 
