@@ -195,7 +195,7 @@ The recommended placement of the files is in a subdirectory of the repository ho
         ├── mock-tfstate-v2.sentinel
         └── mock-tfrun.sentinel
 
-The "sentinel.json" configuration file would look like:
+##### The "sentinel.json" configuration file would look like:
 
     {
       "mock": {
@@ -211,7 +211,7 @@ The "sentinel.json" configuration file would look like:
         "tfrun": "testdata/mock-tfrun.sentinel"
       }
     }
-The contents of "test/foo/pass.json" is :
+##### The contents of "test/foo/pass.json" is :
     {
       "mock": {
         "tfconfig": "../../testdata/mock-tfconfig.sentinel",
