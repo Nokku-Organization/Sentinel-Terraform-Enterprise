@@ -1,4 +1,4 @@
-https://docs.hashicorp.com/sentinel/language/
+
 
 Sentinel policies are written using the Sentinel language. 
 
@@ -51,15 +51,15 @@ The with_header function above returns the request object with the Authorization
 
 Import: strings
 The strings import exposes common string operations.
+      strings.has_prefix(s, prefix)
+      strings.has_suffix(s, suffix)
+      strings.join(a, sep)
+      strings.trim_prefix(s, prefix)
+      strings.trim_suffix(s, suffix)
+      strings.to_lower(s)
+      strings.to_upper(s)
+      strings.split(s, sep)
+for additional info on "strings" refer from [here](https://docs.hashicorp.com/sentinel/imports/strings/)
 
-»strings.has_prefix(s, prefix)
 
-
-strings.has_suffix(s, suffix)
-»strings.join(a, sep)
-»strings.trim_prefix(s, prefix)
-»strings.trim_suffix(s, suffix)
-»strings.to_lower(s)
-»strings.to_upper(s)
-»strings.split(s, sep)
-refer from [here](https://docs.hashicorp.com/sentinel/imports/strings/)
+For Additional Info. Refer [here](https://docs.hashicorp.com/sentinel/language/)
