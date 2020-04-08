@@ -55,7 +55,7 @@ Sentinel gives operations teams the governance capabilities they need to ensure 
     - hard-mandatory requires that the policy passes. If a policy fails, the run is halted and may not be applied until the failure is resolved.
     - soft-mandatory is much like hard-mandatory, but allows an administrator to override policy failures on a case-by-case basis.
     - advisory will never interrupt the run, and instead will only surface policy failures as informational to the user.
-  - Refer this sample-example for better understanding structure: [Example](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Example)
+  - Refer this sample-example for better understanding structure: [Example](https://github.com/Nokku-Organization/Sentinel-Terraform-Enterprise/tree/master/Example) [README.md file you can see the explanation too, where it is not part of the code]
   
 
 
